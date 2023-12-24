@@ -1,5 +1,5 @@
 import { describe, expect, test } from "bun:test";
-import { isHappy, isUgly, maxScore, nthUglyNumber } from ".";
+import { isHappy, isPathCrossing, isUgly, maxScore, minOperations, nthUglyNumber } from ".";
 
 //202. Happy Number - Test
 describe("Happy Number", () => {
@@ -56,3 +56,22 @@ describe("Ugly number the 2nd", () => {
     expect(nthUglyNumber(1352)).toBe(402653184);
   });
 });
+
+
+describe("Path crossing", () => {
+  test("Ex 1", () => {
+    expect(isPathCrossing("NES")).toBe(false)
+  })
+})
+
+describe("Min Operations", () => {
+  test("Ex 1", () => {
+    expect(minOperations("0100")).toBe(1)
+  })
+  test("Ex 2", () => {
+    expect(minOperations("10")).toBe(0)
+  })
+  test("Ex 3", () => {
+    expect(minOperations("1111")).toBe(2)
+  })
+})

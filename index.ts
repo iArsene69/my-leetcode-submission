@@ -74,3 +74,48 @@ export function nthUglyNumber(n: number): number {
   }
   return dp[n - 1];
 }
+
+export function isPathCrossing(path: string): boolean {
+  const visitedPoint: Set<string> = new Set<string>();
+  let x = 0;
+  let y = 0;
+
+  visitedPoint.add("0,0");
+
+  for (let direction of path) {
+    switch (direction) {
+      case "N":
+        y++;
+        break;
+      case "S":
+        y--;
+        break;
+      case "E":
+        x++;
+        break;
+      case "W":
+        x--;
+        break;
+    }
+    let currentPoint = `${x},${y}`;
+    if (visitedPoint.has(currentPoint)) {
+      return true;
+    }
+
+    visitedPoint.add(currentPoint);
+  }
+  return false;
+}
+
+export function minOperations(s: string): number {
+  const n = s.length;
+  let count = 0;
+  if (n === 1) return 0;
+
+  for (let i = 0; i < n; i++) {
+    if (i % 2 === 0 && s[i] === "1") count++;
+    if (i % 2 === 1 && s[i] === "0") count++;
+  }
+
+  return Math.min(count, n - count);
+}
